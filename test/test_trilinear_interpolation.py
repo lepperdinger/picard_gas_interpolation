@@ -6,7 +6,7 @@ from typing import Dict
 from typing import List
 
 
-def continuous_linear_scalar_field(x: float, y: float, z: float):
+def continuous_linear_scalar_field(x: float, y: float, z: float) -> float:
     c0 = -3.42
     cx = 0.435
     cy = 3.21
