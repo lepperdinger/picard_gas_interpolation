@@ -1,3 +1,7 @@
+"""
+This test compares the values of an interpolated linear scalar field with its
+actual values at different locations.
+"""
 import pytest
 import numpy as np
 from picard_gas.trilinear_interpolation import TrilinearInterpolation
