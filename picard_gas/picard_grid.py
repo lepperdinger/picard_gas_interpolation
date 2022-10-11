@@ -43,8 +43,8 @@ def parse_parameter_file(parameter_file_path: str) -> dict:
     return parameters
 
 
-def get_final_grid(parameters: dict) -> Dict[str, np.array]:
-    grid: Dict[str, np.array] = dict()
+def get_picard_grid(parameters: dict) -> Dict[str, np.ndarray]:
+    grid: Dict[str, np.ndarray] = dict()
     grid['x centers'] = np.linspace(parameters['x_min'],
                                     parameters['x_max'],
                                     parameters['n_xgrid'])

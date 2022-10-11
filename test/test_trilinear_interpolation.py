@@ -5,7 +5,7 @@ actual values at different locations.
 import pytest
 import numpy as np
 from picard_gas.trilinear_interpolation import TrilinearInterpolation
-from picard_gas.final_grid import get_final_grid
+from picard_gas.picard_grid import get_picard_grid
 from typing import Dict
 from typing import List
 
@@ -41,7 +41,7 @@ parameters = {
     'z_max': 35.84,
     'n_zgrid': 25,
 }
-grid = get_final_grid(parameters)
+grid = get_picard_grid(parameters)
 discrete_linear_scalar_field = get_discrete_linear_scalar_field(grid)
 interpolation = TrilinearInterpolation(discrete_linear_scalar_field,
                                        grid['volume limits'])

@@ -30,15 +30,15 @@ class H5File:
         if self.file is not None:
             self.file.close()
 
-    def read_density(self) -> np.array:
+    def read_density(self) -> np.ndarray:
         density = np.array(self.file[DENSITY_DATASET_NAME], dtype=np.float64)
         return density
 
-    def read_grid_volume_limits(self) -> np.array:
+    def read_grid_volume_limits(self) -> np.ndarray:
         limits = np.array(self.file['grid volume limits'], dtype=np.float64)
         return limits
 
-    def read_grid_cell_center_limits(self) -> np.array:
+    def read_grid_cell_center_limits(self) -> np.ndarray:
         limits = np.array(self.file['grid cell center limits'],
                           dtype=np.float64)
         return limits

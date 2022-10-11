@@ -9,8 +9,8 @@ Author: Stefan Lepperdinger
 from picard_gas.trilinear_interpolation import TrilinearInterpolation
 from picard_gas.trilinear_interpolation import PointNotWithinGrid
 from picard_gas.H5File import H5File
-from picard_gas.final_grid import get_final_grid
-from picard_gas.final_grid import parse_parameter_file
+from picard_gas.picard_grid import get_picard_grid
+from picard_gas.picard_grid import parse_parameter_file
 import sys
 import argparse
 import numpy as np
@@ -82,14 +82,16 @@ def main():
     destination_file = H5File(arguments.destination_file_path, 'w')
 
     parameters = parse_parameter_file(arguments.parameter_file_path)
-    final_grid = get_final_grid(parameters)
+    picard_grid = get_picard_grid(parameters)
     density = source_file.read_density()
     grid_volume_limits = source_file.read_grid_volume_limits()
-    interpolated_density = interpolate(density, grid_volume_limits, final_grid)
+    interpolated_density = interpolate(density,
+                                       grid_volume_limits,
+                                       picard_grid)
 
     destination_file.write_density(interpolated_density)
-    destination_file.write_grid_limits(final_grid['volume limits'],
-                                       final_grid['cell center limits'])
+    destination_file.write_grid_limits(picard_grid['volume limits'],
+                                       picard_grid['cell center limits'])
 
 
 if __name__ == '__main__':

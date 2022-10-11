@@ -62,6 +62,7 @@ class TrilinearInterpolation:
         field = self.scalar_field
         x_i, y_i, z_i = cell_index
         x_p, y_p, z_p = position_inside_cell
+        # see http://paulbourke.net/miscellaneous/interpolation/
         scalar = (
             field[x_i, y_i, z_i] * (1-x_p) * (1-y_p) * (1-z_p)    # 000
             + field[x_i + 1, y_i, z_i] * x_p * (1-y_p) * (1-z_p)  # 100
