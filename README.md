@@ -11,15 +11,15 @@ Software for projecting the Galactic HI and H2 gas distributions by Philipp Mert
 git clone https://github.com/lepperdinger/picard_gas_interpolation
 cd picard_gas_interpolation
 ```
-3. Create a virtual environment:
+2. Create a virtual environment:
 ```
 virtualenv venv
 ```
-2. Activate the virtual environment:
+3. Activate the virtual environment:
 ```
 . venv/bin/activate
 ```
-3. Install the software in the virtual environment:
+4. Install the software in the virtual environment:
 ```
 pip install .
 ```
