@@ -32,10 +32,10 @@ def plot(arguments: argparse.Namespace):
                        norm=norm,
                        extent=np.concatenate(grid_volume_limits[:2]),
                        origin='lower')
-    plt.colorbar(image, location='bottom', label='density / (1 / cm$^3$)')
+    plt.colorbar(image, location='bottom', label='Density [cm$^{-3}]$')
     plt.clim(arguments.lower_limit, arguments.upper_limit)
-    plt.xlabel('x / kpc')
-    plt.ylabel('y / kpc')
+    plt.xlabel('x [kpc]')
+    plt.ylabel('y [kpc]')
     plt.title(f'z index = {z_index}')
     plt.show()
 
