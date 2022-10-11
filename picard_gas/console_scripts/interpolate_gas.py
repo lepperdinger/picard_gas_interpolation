@@ -9,7 +9,6 @@ Author: Stefan Lepperdinger
 from picard_gas.trilinear_interpolation import TrilinearInterpolation
 from picard_gas.trilinear_interpolation import PointNotWithinGrid
 from picard_gas.H5File import H5File
-from picard_gas.initial_grid import GRID_VOLUME_LIMITS
 from picard_gas.final_grid import get_final_grid
 from picard_gas.final_grid import parse_parameter_file
 import sys
@@ -19,9 +18,10 @@ import os
 from typing import Dict
 
 
-def interpolate(distribution: np.array,
-                picard_grid: Dict[str, np.array]) -> np.array:
-    interpolation = TrilinearInterpolation(distribution, GRID_VOLUME_LIMITS)
+def interpolate(distribution: np.ndarray,
+                grid_volume_limits: np.ndarray,
+                picard_grid: Dict[str, np.ndarray]) -> np.ndarray:
+    interpolation = TrilinearInterpolation(distribution, grid_volume_limits)
 
     x_centers = picard_grid['x centers']
     y_centers = picard_grid['y centers']
@@ -84,7 +84,8 @@ def main():
     parameters = parse_parameter_file(arguments.parameter_file_path)
     final_grid = get_final_grid(parameters)
     density = source_file.read_density()
-    interpolated_density = interpolate(density, final_grid)
+    grid_volume_limits = source_file.read_grid_volume_limits()
+    interpolated_density = interpolate(density, grid_volume_limits, final_grid)
 
     destination_file.write_density(interpolated_density)
     destination_file.write_grid_limits(final_grid['volume limits'],
